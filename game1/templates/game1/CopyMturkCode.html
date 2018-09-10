@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    MTURK CODE - FIND THE KEY BELOW
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .otree-timer {
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <!DOCTYPE html>
+    <html>
+        <body>
+            <p>
+                <BR><BR>
+                To receive credit on MTurk, you must copy and paste the secret key below into your HIT. <BR><BR>
+                YOUR SECRET KEY is {{ player.code }}<BR><BR>
+                If we do not receive the correct key, you will not be credited.
+            </p>
+        </body>
+    </html>
+{% endblock %}
+
+

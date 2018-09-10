@@ -1,0 +1,42 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        window.onload = function () 
+        {
+            document.getElementById("arrive_time").value = (new Date()).toISOString()
+        }
+
+        
+
+    </script>
+    <style>hidden{display:none}</style>    <style>
+        .otree-timer {
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Survey Questions
+{% endblock %}
+
+{% block content %}
+    
+    <input type="hidden" name="time_FinalSurvey" id="arrive_time"/>
+    {% if player.firm == 'A' %}
+        Before you started the competition, you were shown the scores your opponents obtained in Part 1.<BR>
+    {% endif %}
+    {% if player.firm == 'B' %}
+        Before you started the competition, you only saw your own score from Part 1.
+        <BR>
+
+    {% endif %}
+    <br><br>
+    {% formfield player.q77_choice %}
+    {% formfield player.q7 %}
+
+    {% next_button %}
+
+{% endblock %}

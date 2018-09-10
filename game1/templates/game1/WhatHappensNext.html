@@ -1,0 +1,57 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    What Happens Next
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .otree-timer {
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <!DOCTYPE html>
+    <html>
+        <body>
+        {% if player.condition == "chooser" %}
+
+            <p>Before the contest starts, everyone can choose whether or not they want to
+                learn their opponents' Part 1 performance scores.
+                These scores may give you a sense of how good (or bad) your competition is.
+                    <BR><BR>
+ If you choose to learn your opponents' scores, they will be shown to you before you start
+                    competing against them.
+            </p>
+
+ Alternatively, you may choose to not know these scores before the competition.
+<BR><BR>
+Please think carefully about your choice and how it might affect your performance.
+                When you feel confident that you understood these instructions, please proceed.
+{% endif %}
+                {% if player.condition is not "chooser" %}
+                 Before the contest starts, the study will randomly determine whether or not
+                    the group of competitors you belong to will see the group members'
+                    Part 1 performance scores.
+                {% endif %}
+                <br><br>
+            </p>
+        </body>
+    </html>
+
+    <div id="next">
+        <button class="btn btn-primary btn-large next-button" style="float: right;">Next</button>
+    </div>
+
+{% endblock %}
+
+{% comment %}
+ 
+{% endcomment %}
