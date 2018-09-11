@@ -2,10 +2,19 @@
 {% load otree static %}
 
 {% block title %}
-    MTURK CODE - FIND THE KEY BELOW
+    Please wait
 {% endblock %}
 
 {% block scripts %}
+     <script type="text/javascript">
+        window.onload = function ()
+        {
+            document.getElementById("arrive_time").value = (new Date()).toISOString()
+        }
+
+
+
+    </script>
 {% endblock %}
 
 {% block styles %}
@@ -22,13 +31,13 @@
     <html>
         <body>
             <p>
-                <BR><BR>
-                To receive credit on MTurk, you must copy and paste the secret key below into your HIT. <BR><BR>
-                YOUR SECRET KEY is {{ code }}<BR><BR>
-                If we do not receive the correct key, you will not be credited.
+
+Please wait
+
             </p>
         </body>
     </html>
+
 {% endblock %}
 
 

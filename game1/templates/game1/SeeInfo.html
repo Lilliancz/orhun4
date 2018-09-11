@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Get Ready
+    Information from Part 1
 {% endblock %}
 
 {% block scripts %}
@@ -30,11 +30,11 @@
             <input type="hidden" name="time_Game1Firm" id="arrive_time"/>
             <p>
                 {% if player.firm == 'B' and player.condition == "chooser" %}
-                    You chose to not learn your opponents' scores.
+                    You chose to not learn your opponents' scores from part 1.
                 {% endif %}
 
                 {% if player.firm == 'A' and player.condition == "chooser" %}
-                    You chose to learn your opponents' scores.
+                    You chose to learn your opponents' scores from part 1.
                 {% endif %}
              {% if player.firm == 'A' %}
                     Here are the baseline scores for the players in your group.
@@ -45,8 +45,9 @@
                     <br>
                     Opponent 2's baseline score: {{ opponent2 }}.
                 {% endif %}
-                <br><br>On the next screen, you will start the competition. Please click next when you are ready.
-                Good luck!
+                         {% if player.firm == 'B' %}
+                    You will not be shown your opponents' scores from Part 1.
+                {% endif %}
             </p>
         </body>
     </html>

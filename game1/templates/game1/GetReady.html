@@ -27,24 +27,9 @@
     <!DOCTYPE html>
     <html>
         <body>
-            <input type="hidden" name="time_Game1Firm" id="arrive_time"/>
-            <p>
-                {% if player.firm == 'B' %}
-                    You chose to not learn your opponents' scores.
-                {% endif %}
 
-                {% if player.firm == 'A' %}
-                    You chose to learn your opponents' scores. Here are the baseline scores for the players in your group.
-<BR><BR>
-					Your baseline score: {{ baseline }}.
-					<BR>
-                    Opponent 1's baseline score: {{ opponent1 }}.
-                    <br>
-                    Opponent 2's baseline score: {{ opponent2 }}.
-                {% endif %}
-                <br><br>On the next screen, you will start the competition. Please click next when you are ready.
+                On the next screen, you will start the competition. Please click next when you are ready.
                 Good luck!
-            </p>
         </body>
     </html>
 

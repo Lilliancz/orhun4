@@ -21,14 +21,26 @@ class Game1WaitPage(CustomMturkWaitPage):
     skip_until_the_end_of = 'app'
 
 
+class SetCondition(CustomMturkPage):
+    timeout_seconds = 1
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+    def before_next_page(self):
+        self.group.set_condition()
+
+
+class CondWaitPage(CustomMturkWaitPage):
+    group_by_arrival_time = False
+
 class WhatHappensNext(CustomMturkPage):
     form_model = 'player'
     timeout_seconds = settings.SESSION_CONFIGS[0]['timeout_seconds']
 
     def before_next_page(self):
-        self.group.set_condition()
         if self.timeout_happened:
-            self.player.TimeoutWhatHappensA = True
+            self.player.TimeoutWhatHappens = True
 
 
 class ChooseFirm(CustomMturkPage):
@@ -69,6 +81,7 @@ class WhyFirm(CustomMturkPage):
         if self.timeout_happened:
             self.player.TimeoutWhyFirm = True
 
+
 class SeeInfo(CustomMturkPage):
     form_model = 'player'
     timeout_seconds = settings.SESSION_CONFIGS[0]['timeout_seconds']
@@ -105,7 +118,7 @@ class SeeInfo(CustomMturkPage):
         }
 
 
-# wait page for all 3 group members
+# wait page for chooser - all 3 group members
 class Game1FirmWaitPage(CustomMturkWaitPage):
     title_text = "Please wait while other participants are finishing up."
     body_text = "Please wait while other participants are finishing up. You will begin the competition \
@@ -113,13 +126,20 @@ class Game1FirmWaitPage(CustomMturkWaitPage):
     If you are inactive for a while (not on a wait page), you will be kicked out of the study and not get any bonus."
     group_by_arrival_time = False
 
+    def is_displayed(self):
+        return self.player.condition == "chooser"
 
-# Show firm for game 1
+
+# wait page for nonchoosers
+class ForcedWait(CustomMturkPage):
+    timeout_seconds = 20
+
+    def is_displayed(self):
+        return self.player.condition != "chooser"
+
+
 class GetReady(CustomMturkPage):
-    form_model = 'player'
-    form_fields = ['time_Game1Firm']
-    timeout_seconds = settings.SESSION_CONFIGS[0]['timeout_seconds']
-
+    pass
 
 
 # game 1 task
@@ -240,7 +260,7 @@ class FinalSurveyB(CustomMturkPage):
     # timeout_seconds = settings.SESSION_CONFIGS[0]['time_limit']
 
     def is_displayed(self):
-        return self.player.condition is not "chooser"
+        return self.player.condition != "chooser"
 
 
 class PerformancePayment(CustomMturkPage):
@@ -287,11 +307,14 @@ class CopyMturkCode(Page):
 
 page_sequence = [
     Game1WaitPage,
+    SetCondition,
+    CondWaitPage,
     WhatHappensNext,
     ChooseFirm,
     WhyFirm,
     SeeInfo,
     Game1FirmWaitPage,
+    ForcedWait,
     GetReady,
     Game1,
     Results1WaitPage,
