@@ -27,10 +27,10 @@
 {% block content %}
     <br>
                     {% if player.firm == 'A' %}
-        Before you start the contest, please explain why you want to learn the scores your opponents obtained in Part 1.
+        Before you started the contest, you chose to learn your opponents' scores from Part 1. <BR>Please explain why you wanted to learn the scores your opponents obtained in Part 1.
                 {% endif %}
                         {% if player.firm == 'B' %}
-                            Before you start the contest, please explain why you <b>do not want</b> to learn the scores your opponents obtained in Part 1.
+                            Before you started the contest, you chose not to learn your opponents' scores from Part 1. <BR>Please explain why you did not want to learn the scores your opponents obtained in Part 1.
                 {% endif %}
     <br><br>
     <textarea name="q6" cols="40" rows="10" required="true"></textarea>
