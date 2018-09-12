@@ -38,15 +38,6 @@
     {% endif %}
         <b>Correct Answer: Yes. </b>Your opponents will get the exact same problems that you will get, in the same order</P>
 
-    <P><b>Question 3:</b> Is there a penalty for getting a math question wrong? <BR></P>
-     <P><b>Your Answer:</b> {{ player.comp3 }}
-        {% if player.comp3 == "No" %}
-         <div class="correct">Correct!</div>
-    {% else %}
-        <div class="incorrect">Incorrect.</div>
-    {% endif %}
-        <b>Correct Answer: No. </b>There is no penalty for getting math problems wrong. </P>
-
     {% next_button %}
 
 {% endblock %}

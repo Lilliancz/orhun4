@@ -108,10 +108,3 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
         choices=['Yes', 'No'],
         label='Will all the opponents see the same sequence of questions?')
-
-    comp3 = models.StringField(
-        widget=widgets.RadioSelect,
-        choices=['Yes', 'No'],
-        label='Is there a penalty for getting a math question wrong?')
-
-

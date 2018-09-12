@@ -73,7 +73,7 @@ class Survey1(Page):
 
 class Comprehension(Page):
     form_model = 'player'
-    form_fields = ['time_Comprehension', 'comp1', 'comp2', 'comp3']
+    form_fields = ['time_Comprehension', 'comp1', 'comp2']
 
     def vars_for_template(self):
         return {
@@ -81,7 +81,7 @@ class Comprehension(Page):
         }
 
     def before_next_page(self):
-        if self.player.comp1 == "2" and self.player.comp2 == "Yes" and self.player.comp3 == "No":
+        if self.player.comp1 == "2" and self.player.comp2 == "Yes":
             self.player.comp_pass = True
 
 

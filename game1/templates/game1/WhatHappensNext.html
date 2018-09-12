@@ -36,10 +36,11 @@
 Please think carefully about your choice and how it might affect your performance.
                 When you feel confident that you understood these instructions, please proceed.
 {% endif %}
-                {% if player.condition is not "chooser" %}
-                 Before the contest starts, the study will randomly determine whether or not
-                    the group of competitors you belong to will see the group members'
-                    Part 1 performance scores.
+                {% if player.condition != "chooser" %}
+Before the contest starts, the study will randomly determine whether you
+                    and your competitors will see each other's scores from Part 1.
+                    Either everyone in the group will see their competitors' Part 1 scores,
+                    or no one in the group will see their competitors' Part 1 scores.
                 {% endif %}
                 <br><br>
             </p>

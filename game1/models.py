@@ -87,13 +87,14 @@ class Group(BaseGroup):
     def set_condition(self):
         for player in self.get_players():
             condition = player.group_id % 4
-            if condition <= 2:
+            print("condition is " + str(condition))
+            if condition <= 1:
                 player.condition = "chooser"
                 player.firm = ""
-            if condition == 3:
+            if condition == 2:
                 player.condition = "randomA"
-                player.firm == "A"
-            if condition == 4:
+                player.firm = "A"
+            if condition == 3:
                 player.condition = "randomB"
                 player.firm = "B"
 
@@ -140,12 +141,6 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    def role(self):
-        if self.id_in_group == 1:
-            return 'chooser'
-        else:
-            return 'notchooser'
-
     # whether they will switch 1 or not 0
     #firm_switch = models.IntegerField()
 
@@ -177,8 +172,6 @@ class Player(BasePlayer):
         # choices=['A', 'B'],
         # widget=widgets.RadioSelect
     )
-    # firm in game 1 (after switch or no switch)
-    firm_in_game = models.StringField()
 
     # whether skipped to end
     skip_to_end = models.BooleanField(initial=True)
@@ -195,30 +188,19 @@ class Player(BasePlayer):
     # time_Survey45 = models.StringField()
 
     # timeout happened
-    TimeoutWhatHappensA = models.BooleanField(initial=False)
+    TimeoutWhatHappens = models.BooleanField(initial=False)
     TimeoutChooseFirm = models.BooleanField(initial=False)
+    TimeoutSeeInfo = models.BooleanField(initial=False)
+    TimeoutGetReady = models.BooleanField(initial=False)
     TimeoutWhyFirm = models.BooleanField(initial=False)
     TimeoutGame1Firm = models.BooleanField(initial=False)
     TimeoutResults1 = models.BooleanField(initial=False)
-
-    q4 = models.StringField(
-        widget=widgets.RadioSelect,
-        choices=['Yes', 'No', 'I\'m not sure'],
-        label='Did your opponents also make a choice between Firm A and Firm B?')
-
-    # q5 = models.StringField(
-    #     widget=widgets.RadioSelect,
-    #     choices=['Firm A', 'Firm B'],
-    #     label='Please wait while we randomly assign you to two other participants in either \
-    #     Firm A or Firm B for the next round. If you could choose, which Firm would you prefer \
-    #     to compete in? Your answer will not affect the assignment in any way.')
 
     see_scores_choice = models.StringField(
         widget=widgets.RadioSelect,
         choices=['Yes','No'],
         label='Before we show you the results of the contest, '
               'would you like to see the scores your opponents obtained in Part 1?')
-
 
     q6 = models.StringField()
     q7_choice = models.StringField(

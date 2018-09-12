@@ -26,14 +26,14 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'pilot',
-        'display_name': 'pilot',
+        'name': 'orhun4',
+        'display_name': 'orhun4',
         'num_demo_participants': 3,
         'app_sequence': ['baseline', 'game1'],
         'lower_bound': 0,
         'upper_bound': 25,
         'min_players': 3,
-        'time_limit': 5,
+        'time_limit': 10,
         'timeout_seconds': 60,
         'gameDuration': "90 seconds",
         'pageTimeoutWording': "60 seconds",
