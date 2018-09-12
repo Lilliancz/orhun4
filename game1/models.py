@@ -190,6 +190,8 @@ class Player(BasePlayer):
     # timeout happened
     TimeoutWhatHappens = models.BooleanField(initial=False)
     TimeoutChooseFirm = models.BooleanField(initial=False)
+    TimeoutSeeInfo = models.BooleanField(initial=False)
+    TimeoutGetReady = models.BooleanField(initial=False)
     TimeoutWhyFirm = models.BooleanField(initial=False)
     TimeoutGame1Firm = models.BooleanField(initial=False)
     TimeoutResults1 = models.BooleanField(initial=False)

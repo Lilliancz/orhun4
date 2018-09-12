@@ -117,6 +117,10 @@ class SeeInfo(CustomMturkPage):
             'opponent2': opponent2.participant.vars['baseline_score']
         }
 
+    def before_next_page(self):
+        if self.timeout_happened:
+            self.player.TimeoutSeeInfo = True
+
 
 # wait page for chooser - all 3 group members
 class Game1FirmWaitPage(CustomMturkWaitPage):
@@ -139,7 +143,12 @@ class ForcedWait(CustomMturkPage):
 
 
 class GetReady(CustomMturkPage):
-    pass
+    timeout_seconds = settings.SESSION_CONFIGS[0]['timeout_seconds']
+
+    def before_next_page(self):
+        if self.timeout_happened:
+            self.player.TimeoutGetReady = True
+
 
 
 # game 1 task
