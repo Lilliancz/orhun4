@@ -30,12 +30,12 @@
             <input type="hidden" name="time_Game1Firm" id="arrive_time"/>
             <p>
                 {% if player.firm == 'B' and player.condition == "chooser" %}
-                    You chose to not learn your opponents' scores from part 1.<BR>
+                    You chose to not learn your opponents' scores from Part 1.<BR>
                     You will not be shown your opponents' scores from Part 1.
                 {% endif %}
 
                 {% if player.firm == 'A' and player.condition == "chooser" %}
-                    You chose to learn your opponents' scores from part 1.
+                    You chose to learn your opponents' scores from Part 1.
                 {% endif %}
 
                 {% if player.condition == "randomA" %}
