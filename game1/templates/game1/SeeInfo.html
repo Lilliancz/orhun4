@@ -30,7 +30,8 @@
             <input type="hidden" name="time_Game1Firm" id="arrive_time"/>
             <p>
                 {% if player.firm == 'B' and player.condition == "chooser" %}
-                    You chose to not learn your opponents' scores from part 1.
+                    You chose to not learn your opponents' scores from part 1.<BR>
+                    You will not be shown your opponents' scores from Part 1.
                 {% endif %}
 
                 {% if player.firm == 'A' and player.condition == "chooser" %}
@@ -40,6 +41,9 @@
                 {% if player.condition == "randomA" %}
             You and your competitors will see each other's scores from Part 1.
                 {% endif %}
+                {% if player.condition == "randomB" %}
+                    You and your competitors will not see each other's scores from Part 1.
+                {% endif %}
              {% if player.firm == 'A' %}
                     Here are the baseline scores for the players in your group.
 <BR><BR>
@@ -48,9 +52,6 @@
                     Opponent 1's baseline score: {{ opponent1 }}.
                     <br>
                     Opponent 2's baseline score: {{ opponent2 }}.
-                {% endif %}
-                         {% if player.firm == 'B' %}
-                    You and your competitors will not see each other's scores from Part 1.
                 {% endif %}
             </p>
         </body>
