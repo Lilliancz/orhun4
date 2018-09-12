@@ -199,14 +199,14 @@ class Player(BasePlayer):
     see_scores_choice = models.StringField(
         widget=widgets.RadioSelect,
         choices=['Yes','No'],
-        label='Before we show you the results of the contest, '
+        label='Now that you are done with the competition, '
               'would you like to see the scores your opponents obtained in Part 1?')
 
     q6 = models.StringField()
     q7_choice = models.StringField(
         widget=widgets.RadioSelect,
         choices=['Make the same choice', 'Change my choice'],
-        label="If you had the choice again, would you make the same choice?")
+        label="If you had the choice again (before you started the contest), would you make the same choice?")
     q77_choice = models.StringField(
         widget=widgets.RadioSelect,
         choices=["Received information about opponents' scores before competing",
